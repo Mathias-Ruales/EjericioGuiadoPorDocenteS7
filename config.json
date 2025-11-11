@@ -1,0 +1,9 @@
+{
+    "sql_server": {
+      "name_server": "LAPTOP\\SQLEXPRESS",
+      "database": "UDEMYTEST1",
+      "username": "pythonconect",
+      "password": "UDLA",
+      "controlador_odbc": "ODBC Driver 17 for SQL Server"
+    }
+}

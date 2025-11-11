@@ -1,5 +1,7 @@
 # 1. Importar Biblioteca de conexión
 import pyodbc
+import json 
+
 #2. Crear funciones 
 
 # Función consultar registros
@@ -23,9 +25,9 @@ def consultar_registro(conexion):
         ##print(f"\t\t{row.NombreEstudiante}\t{row.ApellidoEstudiante}\t{row.Email}")
             print(row)
 
-        print("\nOk ... Proceso Culminado con Exito: \n")
+
     finally:
-        print("Conexion Cerrada: \n")
+        print("\nOk ... Proceso Culminado con Exito: \n")
 # Función insertar registros
 def insertar_registro(conexion):
     try:
@@ -107,11 +109,14 @@ def mostrar_opciones_crud():
 
     
 # 3. Declarar variables de Conexión
-name_server ='UPEAULA-31223'
-database ='UDEMYTEST1'
-username ='pythonconsultor'
-password = 'UDLA'
-controlador_odbc='ODBC Driver 17 for SQL Server'
+with open('config.json') as archivo_config:
+    config = json.load(archivo_config)
+    
+name_server = config["sql_server"]["name_server"]
+database = config["sql_server"]["database"]
+username = config["sql_server"]["username"]
+password = config["sql_server"]["password"]
+controlador_odbc = config["sql_server"]["controlador_odbc"]
 
 connection_string = f'DRIVER={controlador_odbc};SERVER={name_server};DATABASE={database};UID={username};PWD={password}'
 
